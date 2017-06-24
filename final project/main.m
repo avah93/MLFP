@@ -1,10 +1,17 @@
 clear;
 clc;
 addpath('matlabPyrTools\');
-im = imread('image\image.jpg');
-im = rgb2gray(im);
+
 numberOfLevels = 4;
 numberOfBands = 6;
+finalDataSize = 4;
+
+im = imread('image\image.jpg');
+firstSizes = size(im);
+im = rgb2gray(im);
+
+
+
 [pyramid,pind] = buildSpyr(im,numberOfLevels,'sp5Filters');
 
 images = cell(1,numberOfLevels * numberOfBands);
@@ -18,11 +25,18 @@ for i=1:numberOfLevels
     end
 end
 
-len = size(images ,2);
+for
 
-for i=1:len
-    
-end
+% len = size(images ,2);
+% averageFilter = ones(5,5)/25;
+% filteredAndResizedImages = cell(1 ,len);
+% 
+% for i=1:len
+%     image = imfilter(cell(i) ,averageFilter);
+%     image = imresize(image, finalDataSize ,finalDataSize);
+%     image = imresize(image ,firstSizes);
+%     imshow(image ,[]);
+% end
 
 
 % showSpyr(pyramid,pind);
