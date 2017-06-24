@@ -30,6 +30,7 @@ filteredAndResizedImages = cell(1 ,len);
 reformedImages = [finalDataSize(1) len*finalDataSize(2)];
 
 for i=1:len
+    image = images{i};
 %     image = imfilter(images{i} ,averageFilter);    
     image = imresize(image, finalDataSize);
     
