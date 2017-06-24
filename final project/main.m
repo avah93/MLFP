@@ -24,21 +24,27 @@ for i=1:numberOfLevels
 end
 
 len = size(images ,2);
-averageFilter = ones(5,5)/25;
+averageFilter = ones(3,3)/9;
 filteredAndResizedImages = cell(1 ,len);
 
 reformedImages = [finalDataSize(1) len*finalDataSize(2)];
 
 for i=1:len
-    image = imfilter(images{i} ,averageFilter);
+%     image = imfilter(images{i} ,averageFilter);    
     image = imresize(image, finalDataSize);
     
-    index = (i - 1) * finalDataSize(2) + 1;
-    reformedImages(1:finalDataSize(1) , index:(index + finalDataSize(2) - 1)) = image;
+    b = imresize(image ,firstSizes);
+    
+    figure;
+    imshow(b ,[]);
+    
+    
+%     index = (i - 1) * finalDataSize(2) + 1;
+%     reformedImages(1:finalDataSize(1) , index:(index + finalDataSize(2) - 1)) = image;
 end
 
-vSize = size(reformedImages,1) * size(reformedImages,2);
-v  = reshape(reformedImages,vSize ,1);
+% vSize = size(reformedImages,1) * size(reformedImages,2);
+% v  = reshape(reformedImages,vSize ,1);
 
 
 % showSpyr(pyramid,pind);
