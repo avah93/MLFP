@@ -137,6 +137,8 @@ end
 % Calculate dx and dy;
 dx = xsize - bsizex;
 dy = ysize - bsizey;
+disp(dx);
+disp(dy);
 
 % Fill the center pixel matrix C.
 C = image(origy:origy+dy,origx:origx+dx);
