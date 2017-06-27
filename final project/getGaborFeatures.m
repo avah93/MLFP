@@ -1,4 +1,4 @@
-function [ responses ] = getGaborFeatures( image )
+function [ featureVector ] = getGaborFeatures( image )
 
 addpath('gabor filter\');
 
@@ -14,6 +14,13 @@ filterBank.CreateFilterBank();
 for i=1:length(responses)
     responses{i} = imresize(responses{i} ,[256 256]);
     responses{i} = mean(responses{i});
+end
+
+featureVector = [1 size(responses,2)*256];
+for i=1:length(responses)
+    s = 1 +  (i - 1) * 256;
+    e = s + 255;
+    featureVector(s:e) = responses{i};
 end
 
 end
